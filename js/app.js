@@ -68,7 +68,7 @@ class Mouse {
     }
 }
 
-const mouseObject = new Mouse(100, 100, 25, "yellow");
+const mouseObject = new Mouse(100, 100, 25, "rgba(250, 255, 233, 0.2)");
 const bulle = new Particule(50, 50, 20, 1, 1, "white", mouseObject);
 
 
