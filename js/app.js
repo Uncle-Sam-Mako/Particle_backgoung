@@ -37,6 +37,23 @@ class Particule {
     }
 }
 
+class Mouse {
+    constructor(x, y, radius, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = "yellow";
+        ctx.fill()
+    }
+}
+
+
 const bulle = new Particule(50, 50, 20, 1, 1, "white");
 function init() {
     
