@@ -13,4 +13,38 @@ class Particule {
         this.directionY = directionY;
         this.color = color;
     }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+
+    update() {
+
+        if(this.x < 0 || this.x + this.radius > window.innerWidth) {
+            this.directionX = -this.directionX;
+        }
+        if(this.y < 0 || this.y + this.radius > window.innerHeight) {
+            this.directionY = -this.directionY;
+        }
+
+        this.x += this.directionX;
+        this.y += this.directionY;
+
+        this.draw();
+    }
 }
+
+const bulle = new Particule(50, 50, 20, 1, 1, "white");
+bulle.draw();
+
+
+function animateParticule() {
+    requestAnimationFrame(animateParticule);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    bulle.update()
+}
+
+animateParticule()
