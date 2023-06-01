@@ -38,7 +38,10 @@ class Particule {
 }
 
 const bulle = new Particule(50, 50, 20, 1, 1, "white");
-bulle.draw();
+function init() {
+    
+    bulle.draw();
+}
 
 
 function animateParticule() {
@@ -47,4 +50,20 @@ function animateParticule() {
     bulle.update()
 }
 
-animateParticule()
+init();
+animateParticule();
+
+
+let timeoutVariable;
+
+function resizeWindow() {
+    init();
+    animateParticule();
+}
+
+window.addEventListener('resize', () => {
+    window.clearTimeout(timeoutVariable);
+    timeoutVariable = setTimeout(resizeWindow, 100);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+})
